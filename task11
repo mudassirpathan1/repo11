@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <title>object in local storage- javascript - decode </title>
+<link rel="stylesheet" herf="http://youtube.local/assets/decode.css">
+
+<link rel="shortcut icon" herf="http://youtube.local/assets/favlcon.ico"> 
+
+
+<style media="screen">
+
+
+</style>
+
+
+
+<body>
+    <h2 id="title">objects in local storage - javascript - decode</h2>
+    
+</body>
+
+<script type="text/javascript">
+    let myobj={
+        name : "aman",
+        age : 12
+    };
+    // let myobj_serlaized =JSON.stringify(myobj);
+
+    // localStorage.setItem('myobj', myobj_serlaized);
+
+    // let myobj_deserlalized= JSON.parse(localStorage.getItem('myobj'));
+
+    // console.log(myobj_deserlalized);
+
+</script>
+</html>
+
+<------------------------Note-------------------------------------------->
+<--------when we add new user then old user data is remove so we need to some code for this situation The key point being that you need to load your existing users to be able to add to them, if you don't then you are essentially creating the users array fresh each time the page loads and you put data into it.
+
+You may want to create something like a "loadData" function that checks if the array is initialized, loads it if it is and creates it if it isn't. You can make this generic so that you can use it to access any key and provide a default value if the key isn't present e.g.
+
+function loadData(key, def) {
+    var data = localStorage.getItem(key);
+    return null == data ? def : JSON.parse(data)
+} 
+then
+
+// load "list" - set to an empty array if the key isn't present
+let users = loadData('list', []); ----------------------->
